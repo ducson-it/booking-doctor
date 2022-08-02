@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Font */
+.font1 {
+  font-size: 14px;
+}
+
+.font2 {
+  font-size: 11px;
+}
+
+.banner {
+  position: relative;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    360deg,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 0) 30%
+  );
+}
+
+.search {
+  position: absolute;
+  top: 400px;
+  width: 100%;
+}
+
+.search h1 {
+  line-height: 60px;
+}
+
+.input-search {
+  padding: 0px 30%;
+}
+
+/* carousel post */
+.swiper.two {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper.two .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper.two .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  overflow: hidden;
+  perspective: 1px;
+}
+
+/* Section */
+.swiper.three {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper.three .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper.three .swiper-slide img {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+/* section1 */
+.swiper.four {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper.four .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper.four .swiper-slide img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+
+.swiper.one{
+  width: 100%;
+  height: 100%;
+}
+
+.swiper.one .swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper.one .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* image doctor person */
+.img-doctor img{
+  display: block;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+/* checkbox book appoinment */
+.checkbox-book{
+  border: 1px solid #f22;
+}
+
+.checkbox-item input{
+  opacity: 0;
+}
+
+.checkbox-book .checkbox-item label{
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #f22;
+  }
+
+.checkbox-item input:checked + label{
+  background-color:black;
+}
+
