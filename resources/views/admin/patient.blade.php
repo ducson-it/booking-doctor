@@ -6,7 +6,7 @@
             {{ session('msg') }}
         </div>
     @endif
-    <h1>Quản lý bác sĩ</h1>
+    <h1>Quản lý bệnh nhân</h1>
     <table class="table">
         <thead>
             <tr>

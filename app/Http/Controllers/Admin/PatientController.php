@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Constants;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -16,7 +17,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $listPatient = Role::find(3)->user;
+        $listPatient = Role::find(3)->users;
         return view('admin.patient', compact('listPatient'));
     }
 
@@ -84,7 +85,7 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        $patient = Role::find(3)->user()
+        $patient = Role::find(Constants::ROLE_PATIENT)->user()
             ->where('id', $id)
             ->first();
         return view('admin.edit-patient', compact('patient'));
@@ -97,7 +98,7 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Doctor $doctor)
     {
         $request->validate([
             'name' => 'required|min:5',
@@ -109,7 +110,6 @@ class PatientController extends Controller
             'email.unique' => 'Da ton tai email',
         ]);
 
-        $doctor = User::find($id);
 
         $doctor->name = $request->name;
         $doctor->email = $request->email;

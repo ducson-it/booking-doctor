@@ -16,7 +16,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $listDoctor = Role::find(2)->user;
+        $listDoctor = Role::find(2)->users;
         return view('admin.doctor', compact('listDoctor'));
     }
 
@@ -51,16 +51,17 @@ class DoctorController extends Controller
         ]);
 
         $doctor = new User();
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        $doctor->password = $request->password;
-        $doctor->role_id = $request->role;
-        $doctor->level = '';
-        $doctor->image = '';
-        $doctor->phone = '';
-        $doctor->address = '';
-        $doctor->description = '';
-        $doctor->gender = '';
+        $doctor->fill($request->all());
+        // $doctor->name = $request->name;
+        // $doctor->email = $request->email;
+        // $doctor->password = $request->password;
+        // $doctor->role_id = $request->role;
+        // $doctor->level = '';
+        // $doctor->image = '';
+        // $doctor->phone = '';
+        // $doctor->address = '';
+        // $doctor->description = '';
+        // $doctor->gender = '';
         $doctor->save();
         return redirect()->route('admin.doctor.index')->with('msg', 'tao user thanh cong');
     }
@@ -84,7 +85,7 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor = Role::find(2)->user()
+        $doctor = Role::find(2)->users()
             ->where('id', $id)
             ->first();
         return view('admin.edit-doctor', compact('doctor'));
@@ -127,6 +128,7 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
+
         User::destroy($id);
 
         return redirect()->route('admin.doctor.index')->with('msg', 'delete thanh cong');

@@ -13,6 +13,7 @@ class Doctor_Shift extends Model
 
     protected $fillable = [
         'shift_doctor_id',
-        'doctor_id'
+        'doctor_id',
+        'date'
     ];
 }

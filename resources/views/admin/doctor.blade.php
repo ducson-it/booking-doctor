@@ -32,11 +32,12 @@
                             @csrf
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
-                        <form action="{{ route('admin.doctor.destroy', $doctor->id) }}" method="post">
+                        {{-- <form action="{{ route('admin.doctor.destroy', $doctor->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        </form> --}}
+                        @include('includes.delete', ['route'=> 'admin.doctor.destroy','id'=> $doctor->id]);
                     </td>
                 </tr>
             @endforeach

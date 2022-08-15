@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -56,9 +57,9 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function role(): BelongsTo
+    public function roles(): BelongsTo
     {
-        return $this->belongsTo(Role::class, '', 'other_key');
+        return $this->belongsTo(Role::class);
     }
 
     /**
@@ -66,13 +67,23 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function shift(): BelongsToMany
+    public function shifts(): BelongsToMany
     {
-        return $this->belongsToMany(Shift::class);
+        return $this->belongsToMany(Shift::class, 'doctor_shift', 'doctor_id', 'shift_doctor_id');
+    }
+
+    public function package_cares(): BelongsToMany
+    {
+        return $this->belongsToMany(Package_Care::class, 'package_cares', 'doctor_id', 'doctor_package_id');
+    }
+
+    public function booking(): hasMany
+    {
+        return $this->hasMany(Booking::class, 'doctor_id', 'id');
     }
 
     public function getAllDoctor() {
-        $allDoctor = User::where('role_id','2');
+        $allDoctor = User::where('role_id','2')->get();
         return $allDoctor;
     }
 

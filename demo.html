@@ -1,0 +1,23 @@
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 – Classic editor</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+</head>
+<body>
+    <h1>Classic editor</h1>
+
+    <textarea id="editor"></textarea>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+
+        var editor = document.getElementById('editor');
+        editor.addEventListener('keyup', function () {
+            console.log(editor.getData());
+        })
+    </script>
+</body>
+</html>

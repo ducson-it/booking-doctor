@@ -16,11 +16,12 @@ class DoctorShiftSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 20; $i++) {
+        for ($i=0; $i < 5; $i++) {
             Doctor_Shift::insert(
                 [
                     'shift_doctor_id' => Shift::all()->random()->id,
-                    'doctor_id' => User::where('role_id', '=', '1')->get()->random()->id
+                    'doctor_id' => User::where('role_id', '=', '2')->get()->random()->id,
+                    'date' => '2022-08-06'
                 ],
             );
         };

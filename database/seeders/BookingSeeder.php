@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker;
@@ -20,10 +21,11 @@ class BookingSeeder extends Seeder
         for ($i=0; $i < 20; $i++) {
             Booking::insert(
                 [
-                    'doctor_name' => 'abc',
-                    'patient_name' => 'abc',
-                    'shift_name' => 'abc',
+                    'doctor_id' => User::Where('role_id', '=', 2)->get()->random()->id,
+                    'patient_id' =>  User::Where('role_id', '=', 3)->get()->random()->id,
                     'status' => $faker->randomElement(['1','2','3']),
+                    'package_id' => 1,
+                    'count' => 1,
                 ],
             );
         };

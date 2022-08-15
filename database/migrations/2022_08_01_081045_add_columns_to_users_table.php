@@ -14,12 +14,12 @@ class AddColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('image');
-            $table->string('phone');
-            $table->string('address');
-            $table->text('description');
-            $table->string('level');
-            $table->string('gender');
+            $table->string('image')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('description')->nullable();
+            $table->string('level')->nullable();
+            $table->string('gender')->nullable();
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });

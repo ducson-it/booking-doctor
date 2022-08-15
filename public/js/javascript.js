@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 //carousel Banner
 var swiper = new Swiper(".mySwiper.one", {
     spaceBetween: 30,
@@ -95,4 +101,3 @@ var swiper = new Swiper(".mySwiper.three", {
   });
 
   //checkbox
-  

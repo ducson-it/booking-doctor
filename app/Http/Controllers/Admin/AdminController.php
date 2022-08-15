@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Booking;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $listBook = Booking::with('user','shift')->get();
+        $count1 = Booking::where('status', 1)->count();
+        $count2 = Booking::where('status', 2)->count();
+        $count3 = Booking::where('status', 3)->count();
+        $count4 = Booking::where('status', 4)->count();
+        return view('admin.dashboard', compact('listBook', 'count1', 'count2', 'count3', 'count4'));
     }
 
     /**
