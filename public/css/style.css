@@ -200,6 +200,7 @@
     position: relative;
     z-index: 100;
     margin: 40px 0px;
+    text-align: center;
   }
 
   .icon-boxes .icon-box {
@@ -240,4 +241,11 @@
     margin-bottom: 0;
     color: #777777;
   }
-
+  .icon-boxes h4 a{
+    text-decoration: none;
+    font-size: 21px;
+  }
+   .icon-boxes p{
+    width: 100%;
+    font-weight: bold;
+   }
