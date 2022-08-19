@@ -68,7 +68,10 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function() {
 //doctor
 Route::prefix('doctor')->middleware(['auth'])->name('doctor.')->group(function() {
    Route::get('/', [DoctorMain::class, 'index'])->name('main');
+   Route::get('/profile-doctor', [DoctorMain::class, 'profileDoctor'])->name('profile.doctor');
+   Route::get('/edit-doctor', [DoctorMain::class, 'editProfileDoctor'])->name('profile.edit');
+   Route::post('/update-doctor', [DoctorMain::class, 'updateProfileDoctor'])->name('profile.update');
    Route::get('/doctor-shift', [DoctorMain::class, 'selectShift'])->name('shift.doctor');
-   Route::post('create-shift-doctor/{id}', [DoctorMain::class, ''])->name('create.shift');
+   Route::post('/create-shift-doctor/{id}', [DoctorMain::class, ''])->name('create.shift');
 });
 
