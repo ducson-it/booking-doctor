@@ -200,6 +200,7 @@
     position: relative;
     z-index: 100;
     margin: 40px 0px;
+    text-align: center;
   }
 
   .icon-boxes .icon-box {
@@ -240,6 +241,7 @@
     margin-bottom: 0;
     color: #777777;
   }
+<<<<<<< HEAD
 
 
   .home-search a{
@@ -290,3 +292,43 @@
         flex: 2;
     }
 
+=======
+  .icon-boxes h4 a{
+    text-decoration: none;
+    font-size: 21px;
+  }
+   .icon-boxes p{
+    width: 100%;
+    font-weight: bold;
+    color: red;
+   }
+   #title-login{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    background-color:#5e8ad1;
+   }
+   .row label{
+    font-size: 19px;
+    font-weight: bold;
+    color: blue;
+   }
+   #title-register{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    background-color:#5e8ad1;
+   }
+   form label{
+    text-align: left;
+   }
+   a.nav-link{
+     font-size: 22px;
+     font-weight: bold;
+   }
+   a.nav-link:hover{
+    color: red;
+   }
+>>>>>>> ff6eaa156c9ec88f4b81ded5ebe4b94b6dea44e8
