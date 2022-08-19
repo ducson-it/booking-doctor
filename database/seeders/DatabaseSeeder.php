@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // ShiftSeeder::class,
             // RoleSeeder::class,
             // UserSeeder::class,
-            // DoctorShiftSeeder::class,
+            DoctorShiftSeeder::class,
             // BookingSeeder::class,
             // PackageCareSeeder::class
         ]);

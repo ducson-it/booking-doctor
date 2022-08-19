@@ -114,6 +114,18 @@
                     <span>Tạo user bác sĩ</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.new.list') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản trị bài viết</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.package.index') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản trị gói khám</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

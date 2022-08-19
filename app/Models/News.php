@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Package_Care extends Model
+class News extends Model
 {
     use HasFactory;
 
-    protected $table = 'package_cares';
+    protected $table = 'news';
 
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'count',
+        'title',
+        'subtitle',
+        'content',
         'image'
     ];
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnForiegnKeyToBookingsTable extends Migration
+class AddColumnImageToPackageCaresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnForiegnKeyToBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_package_id');
-            $table->foreign('user_package_id')->references('id')->on('user_packages')->onDelete('cascade');
+        Schema::table('package_cares', function (Blueprint $table) {
+            $table->string('image');
         });
     }
 
@@ -26,8 +25,8 @@ class AddColumnForiegnKeyToBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            //
+        Schema::table('package_cares', function (Blueprint $table) {
+            $table->dropColumn('image');
         });
     }
 }

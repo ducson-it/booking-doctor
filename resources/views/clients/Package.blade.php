@@ -13,7 +13,7 @@
                         <h3>Detail description package</h3>
                         <input type="hidden" name="packageId" value="{{ $package->id }}">
                         <p>
-                            {{ $package->description }}
+                            {!! $package->description !!}
                         </p>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                                                 <img width="100%" src="{{ asset('img/bookingcare-cover-4.jpg') }}"
                                                     alt="">
                                             </div>
-                                            <div class="label-text">
-                                                <p class="text-center">{{ $doctor->name }}</p>
-                                                <p class="text-center">{{ $doctor->description }}</p>
+                                            <div class="label-text px-5">
+                                                <p>{{ $doctor->name }}</p>
+                                                <p>{!! $doctor->description !!}</p>
                                             </div>
                                         </label>
                                     </div>
