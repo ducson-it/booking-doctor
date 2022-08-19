@@ -22,7 +22,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
-                            <strong>{{ $getDoctor->price }}</strong>
+                            <strong>{{ $getPackage->price }}</strong>
                         </li>
                     </ul>
                 </div>

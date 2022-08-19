@@ -44,6 +44,7 @@ class ClientController extends Controller
     {
         $allDoctor = $this->user->getAllDoctor();
         $package = Package_Care::find($id);
+
         return view('clients.Package', compact('package', 'allDoctor'));
     }
 
