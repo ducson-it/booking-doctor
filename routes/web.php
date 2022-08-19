@@ -51,6 +51,10 @@ Route::get('/infor-success', [ClientController::class, 'inforSuccess'])->name('p
 
 //List package
 Route::get('/check-package', [ClientController::class, 'checkPackage'])->name('package.check');
+//search schedule
+Route::get('/search-schedule', [ClientController::class, 'scheduleClient'])->name('search.schedule');
+//new main
+Route::get('/new-main/{id}', [ClientController::class, 'newMain'])->name('newMain');
 
 Route::post('/ajax/detail-doctor/{id}', [DetailDoctorController::class, 'ajaxDetailDoctor'])->name('ajax.detailDoctor');
 Route::post('/ajax/profile', [DetailDoctorController::class, 'ajaxStatusBooking'])->name('ajax.statusBooking');

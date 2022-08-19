@@ -18,19 +18,21 @@
         <div class="row">
             <h3 class="mt-4">Check shift availability</h3>
             <div class="col-lg-12 bg-white shadow p-4">
-                <form action="">
+                <form action="{{ route('search.schedule') }}" method="GET">
+                    @csrf
                     <div class="row align-items-end">
                         <div class="col-lg-5 mb-3">
                             <label class="form-label fw-bold">Date</label>
-                            <input type="date" class="form-control shadow-none" name="" id="" />
+                            <input type="date" class="form-control shadow-none" name="dateSchedule" id="" />
                         </div>
                         <div class="col-lg-5 mb-3">
                             <label class="form-label fw-bold">Hour</label>
-                            <select class="form-select form-select-md" aria-label=".form-select-lg example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select form-select-md" name="selectSchedule" aria-label=".form-select-lg example">
+                                <option>Open this select menu</option>
+                                @foreach ($allShift as $shift)
+                                    <option value="{{ $shift->id }}">{{ $shift->name }}</option>
+                                @endforeach
+
                             </select>
                         </div>
                         <div class="col-lg-2 mb-3">
@@ -75,7 +77,7 @@
                             <a href="{{ route('detailDoctor', $doctor->id) }}"
                                 class="swiper-slide d-flex flex-column border border-primary pb-5">
                                 <div class="p-2">
-                                    <img src="{{ asset('img/'.$doctor->image) }}" alt="">
+                                    <img src="{{ asset('img/' . $doctor->image) }}" alt="">
                                 </div>
                                 <h5 class="font1">{{ $doctor->name }}</h5>
                                 <h4 class="font2">{{ $doctor->level }}</h4>
@@ -97,21 +99,30 @@
             <div #swiperRef="" class="swiper mySwiper two">
                 <div class="swiper-wrapper">
                     @foreach ($allNew as $new)
-                    <div class="swiper-slide">
-                        <div class="row">
-                            <img src="{{ asset('img/'.$new->image) }}" alt="" />
-                            <h3 class="font1 text-start my-2">
-                               {{ $new->title }}
-                            </h3>
-                            <p class="font2 text-start">
-                                {{ $new->subtitle }}
-                            </p>
-                            <a class="text-decoration-none font1 text-start" href="">Xem chi tiết <i
-                                    class="bi bi-chevron-right fs-6"></i></a>
-                        </div>
-                    </div>
+                        <a href="{{ route('newMain', $new->id) }}">
+                            <div class="swiper-slide">
+                                <div class="row">
+                                    <img src="{{ asset('img/' . $new->image) }}" alt="" />
+                                    <h3 class="font1 text-start my-2">
+                                        {{ $new->title }}
+                                    </h3>
+                                    <p class="font2 text-start">
+                                        {{ $new->subtitle }}
+                                    </p>
+                                    <a class="text-decoration-none font1 text-start" href="">Xem chi tiết <i
+                                            class="bi bi-chevron-right fs-6"></i></a>
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
         </div>
     @endsection
+
+    @push('js')
+        <script>
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("setTodaysDate")[0].setAttribute('min', today);
+        </script>
+    @endpush
