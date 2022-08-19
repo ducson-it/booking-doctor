@@ -279,3 +279,19 @@
    a.nav-link:hover{
     color: red;
    }
+   .itemDoctor img{
+    width: 200px;
+    border: 1px;
+   }
+   .info-doctor{
+    color: blue;
+    padding-left: 70px;
+    font-size: 20px;
+   }
+   #search_doctor{
+    margin-bottom: 100px;
+    border: 2px black solid;
+    width: 70%;
+    border-radius: 10px;
+   }
+   
