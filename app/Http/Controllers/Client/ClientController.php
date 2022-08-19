@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Doctor_Shift;
 use App\Models\News;
 use App\Models\Package_Care;
 use App\Models\Shift;
@@ -27,7 +28,8 @@ class ClientController extends Controller
         $allDoctor = $this->user->getAllDoctor();
         $allPackage = Package_Care::all();
         $allNew = News::all();
-        return view('clients.home', compact('allDoctor', 'allPackage', 'allNew'));
+        $allShift = Shift::all();
+        return view('clients.home', compact('allDoctor', 'allPackage', 'allNew', 'allShift'));
     }
 
     public function detailDoctor($id)
@@ -115,5 +117,21 @@ class ClientController extends Controller
             $doctor = User::find($request->doctor_id);
             return view('clients.buy_package_success', compact('doctor'));
         }
+    }
+
+    public function scheduleClient(Request $request)
+    {
+        $checks= Doctor_Shift::where('date', $request->dateSchedule)
+                            ->where('date', $request->selectSchedule)
+                            ->get();
+        return view('clients.check-schedule', compact('checks'));
+    }
+
+
+    public function newMain($id)
+    {
+        $details = News::find($id);
+
+        return view('clients.new-main', compact('details'));
     }
 }
