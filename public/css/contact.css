@@ -1,0 +1,46 @@
+
+.main{
+    margin-bottom: 30px;
+}
+.title{
+    text-align: center;
+    color: blue;
+    padding-top: 20px;
+}
+.block{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.block div{
+    margin-top: 20px;
+}
+.block span{
+    display: block;
+}
+.block select{
+ width: 90%;
+ height: 40px;
+}
+ .block input{
+    width: 90%;
+    height: 40px;
+}
+form {
+    width: 1100px;
+    padding-left: 450px;
+}
+span{
+    font-weight: bold;
+    font-size: 18px;
+}
+ form button{
+    background-color: #3b47cc;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 3px 5px;
+ }
+ form button:hover{
+    background-color: red;
+ }
+ 

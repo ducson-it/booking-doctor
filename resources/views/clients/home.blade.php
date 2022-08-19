@@ -133,7 +133,7 @@
 </div>
 <!-- Post -->
 <div class="container  py-5">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between" style="margin-bottom:40px ;font-weight: bold;">
         <h3>Top cẩm nang hay</h3>
         <a href=""><button class="border p-2 font-1">Xem thêm</button></a>
     </div>
