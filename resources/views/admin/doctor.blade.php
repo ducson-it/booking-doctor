@@ -27,7 +27,7 @@
             @foreach ($listDoctor as $doctor)
                 <tr>
                     <th>{{ $stt++ }}</th>
-                    <td><img width="100%" src="{{ asset('img/ducson.jpg') }}" alt=""></td>
+                    <td><img width="100%" src="{{ asset('img/'.$doctor->image) }}" alt=""></td>
                     <td>{{ $doctor->name }}</td>
                     <td>{{ $doctor->email }}</td>
                     <td>{{ $doctor->password }}</td>

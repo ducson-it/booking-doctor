@@ -19,6 +19,8 @@ class CreateDoctorShiftTable extends Migration
             $table->foreign('shift_doctor_id')->references('id')->on('shifts')->onDelete('cascade');
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->date('date')->nullable();
+            $table->unique(['shift_doctor_id', 'doctor_id', 'date']);
             $table->timestamps();
         });
     }

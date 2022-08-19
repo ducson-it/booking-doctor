@@ -7,8 +7,8 @@
         </div>
     @endif
     <div class="title d-flex justify-content-between p-2">
-        <h1>Quản lý bệnh nhân</h1> 
-        <a href="" class="btn btn-primary">Tạo user bệnh nhân</a>
+        <h1>Quản lý bệnh nhân</h1>
+        <a href="{{ route('admin.patient.create') }}" class="btn btn-primary">Tạo user bệnh nhân</a>
     </div>
     <table class="table">
         <thead>
@@ -29,7 +29,7 @@
             @foreach ($listPatient as $patient)
                 <tr>
                     <th>{{ $stt++ }}</th>
-                    <td><img width="100%" src="{{ asset('img/ducson.jpg') }}" alt=""></td>
+                    <td><img width="100%" src="{{ asset('img/'.$patient->image) }}" alt="image-patient"></td>
                     <td>{{ $patient->name }}</td>
                     <td>{{ $patient->email }}</td>
                     <td>{{ $patient->password }}</td>

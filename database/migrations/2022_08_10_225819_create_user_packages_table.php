@@ -20,6 +20,8 @@ class CreateUserPackagesTable extends Migration
             $table->foreign('doctor_package_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('package_id');
             $table->foreign('package_id')->references('id')->on('package_cares')->onDelete('cascade');
+            $table->integer('count');
+            $table->integer('buy_number')->default(0);
             $table->timestamps();
         });
     }

@@ -43,23 +43,23 @@ class ClientController extends Controller
     public function selectPackage($id)
     {
         $itemPackage = User_package::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+        $allDoctor = $this->user->getAllDoctor();
+            $package = Package_Care::find($id);
         if (!empty($itemPackage)) {
             if ($itemPackage->package_id == $id) {
                 if ($itemPackage->count > 0) {
                     return redirect()->back()->with('msg', 'Bạn chưa sử dụng hết gói đã mua');
+                }else{
+                    return view('clients.Package', compact('package', 'allDoctor'));
                 }
             } elseif ($itemPackage->package_id != $id) {
                 if ($itemPackage->count > 0) {
                     return redirect()->back()->with('msg', 'Bạn chưa sử dụng hết gói đã mua');
                 } else {
-                    $allDoctor = $this->user->getAllDoctor();
-                    $package = Package_Care::find($id);
                     return view('clients.Package', compact('package', 'allDoctor'));
                 }
             };
         } else {
-            $allDoctor = $this->user->getAllDoctor();
-            $package = Package_Care::find($id);
             return view('clients.Package', compact('package', 'allDoctor'));
         }
     }

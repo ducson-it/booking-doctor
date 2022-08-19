@@ -51,17 +51,17 @@ class DoctorController extends Controller
         ]);
 
         $doctor = new User();
-        $doctor->fill($request->all());
-        // $doctor->name = $request->name;
-        // $doctor->email = $request->email;
-        // $doctor->password = $request->password;
-        // $doctor->role_id = $request->role;
-        // $doctor->level = '';
-        // $doctor->image = '';
-        // $doctor->phone = '';
-        // $doctor->address = '';
-        // $doctor->description = '';
-        // $doctor->gender = '';
+        // $doctor->fill($request->all());
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->password = $request->password;
+        $doctor->role_id = $request->role;
+        $doctor->level = '';
+        $doctor->image = '';
+        $doctor->phone = '';
+        $doctor->address = '';
+        $doctor->description = '';
+        $doctor->gender = '';
         $doctor->save();
         return redirect()->route('admin.doctor.index')->with('msg', 'tao user thanh cong');
     }
@@ -100,24 +100,46 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $doctor = User::find($id);
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|unique:users'
+            'email' => 'required|unique:users',
+            'phone' => 'required',
+            'address' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'level' => 'required',
         ], [
-            'name.required' => 'Ban can phai nhap ten',
-            'name.min' => 'Khong duoc nho hon 5 ky tu',
-            'email.required' => 'Ban can phai nhap emil',
-            'email.unique' => 'Da ton tai email',
+            'name.required' => 'Bạn cần phải nhập tên',
+            'password.required' => 'Bạn cần phải nhập password',
+            'name.min' => 'Không được nhỏ hơn 5 ký tự',
+            'email.required' => 'Bạn cần phải nhập email',
+            'email.unique' => 'Email đã tồn tại',
+            'phone.required' => 'Không được để trống',
+            'address.required' => 'Không được để trống',
+            'image.required' => 'Không được để trống',
+            'description.required' => 'Không được để trống',
+            'level.required' => 'Không được để trống',
         ]);
 
-        $doctor = User::find($id);
+        if($request->hasFile('image')) {
+            $originName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$extension;
+            $request->file('image')->move(public_path('img'), $fileName);
+        }
 
         $doctor->name = $request->name;
         $doctor->email = $request->email;
+        $doctor->phone = $request->phone;
+        $doctor->address = $request->address;
+        $doctor->image = $fileName;
+        $doctor->description = $request->description;
         $doctor->level = $request->select;
         $doctor->save();
 
-        return redirect()->route('admin.doctor.index')->with('msg', 'update thanh cong');
+        return redirect()->route('admin.doctor.index')->with('msg', 'Update thành công');
     }
 
     /**
@@ -131,7 +153,7 @@ class DoctorController extends Controller
 
         User::destroy($id);
 
-        return redirect()->route('admin.doctor.index')->with('msg', 'delete thanh cong');
+        return redirect()->route('admin.doctor.index')->with('msg', 'Delete thành công');
 
     }
 }

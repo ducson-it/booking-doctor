@@ -29,6 +29,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Ckeditor
+Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
+
 //client
 Route::get('/', [ClientController::class, 'index'])->name('client');
 Route::get('/detail-doctor/{id}', [DetailDoctorController::class, 'detailDoctor'])->name('detailDoctor');
@@ -37,6 +40,7 @@ Route::get('/delete/{id}', [DetailDoctorController::class, 'deleteBooking'])->mi
 Route::get('/restore/{id}', [ShiftController::class, 'restoreShift'])->middleware('auth')->name('restoreShift');
 Route::get('/profile/{id}', [DetailDoctorController::class, 'detailPatient'])->name('detailPatient');
 Route::get('profile/edit/{id}', [DetailDoctorController::class, 'editProfile'])->name('edit-profile');
+Route::post('profile/edit/{id}', [DetailDoctorController::class, 'updateProfilePatient'])->name('update-profile');
 Route::get('/package/{id}', [ClientController::class, 'selectPackage'])->name('package');
 Route::get('/package-bill', [ClientController::class, 'packageBill'])->name('package.bill');
 Route::post('/save-bill-package', [ClientController::class, 'saveBill'])->name('package.save');

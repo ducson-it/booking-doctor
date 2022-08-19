@@ -27,8 +27,8 @@ class BookingSeeder extends Seeder
                     'status' => $faker->randomElement(['1','2','3']),
                     'date' => '2022-08-17',
                     'shiftId' => Shift::all()->random()->id,
-                    'package_id' => 1,
-                    'count' => 8,
+                    // 'package_id' => 1,
+                    // 'count' => 8,
                 ],
             );
         };

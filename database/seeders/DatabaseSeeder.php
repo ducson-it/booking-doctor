@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             // UserSeeder::class,
             // DoctorShiftSeeder::class,
             // BookingSeeder::class,
-            PackageCareSeeder::class
+            // PackageCareSeeder::class
         ]);
     }
 }

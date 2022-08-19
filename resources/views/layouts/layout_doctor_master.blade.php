@@ -36,6 +36,7 @@
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
 
 </head>
@@ -269,6 +270,12 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('wysiwyg-editor', {
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 
     @stack('js')
 </body>

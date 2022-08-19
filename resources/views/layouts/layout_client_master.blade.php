@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
     <title>Document</title>
 </head>
 
@@ -244,6 +247,12 @@
     </script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/javascript.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('wysiwyg-editor', {
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
     @stack('js')
 </body>
 

@@ -18,6 +18,8 @@ class CreateBookingsTable extends Migration
             $table->string('doctor_id');
             $table->string('patient_id');
             $table->string('status');
+            $table->date('date')->nullable();
+            $table->integer('shiftId')->nullable();
             $table->timestamps();
         });
     }
