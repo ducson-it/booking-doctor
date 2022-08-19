@@ -2,12 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row text-center">
             <h3 class="text-center">Thông tin cá nhân</h3>
-            <div class="avt-patient">
+            <div style="width: 200px; margin-left:450px;">
                 <img src="{{ asset('img/'.Auth::user()->image) }}" width="100%" alt="">
             </div>
-            <div class="des-patient ">
+        </div>
+            <div class="des-patient text-center">
                 <p>Name: {{ Auth::user()->name }}</p>
                 <p>Email: {{ Auth::user()->email }}</p>
                 <p>Phone: {{ Auth::user()->phone }}</p>
@@ -15,7 +16,5 @@
                 <p>Level: {{ Auth::user()->level }}</p>
                 <a href="{{ route('doctor.profile.edit', Auth::user()->id) }}" class="d-block my-2 btn btn-warning">Sửa thông tin</a>
             </div>
-
-        </div>
     </div>
 @endsection

@@ -96,7 +96,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.shift') }}">
+                <a class="nav-link" href="{{ route('doctor.manager.patient') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Quản lý bệnh nhân</span></a>
             </li>

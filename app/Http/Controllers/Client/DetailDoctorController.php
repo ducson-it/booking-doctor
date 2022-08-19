@@ -42,11 +42,17 @@ class DetailDoctorController extends Controller
                 if (!empty($issetBooking)) {
                     if ($issetBooking->doctor_id == $shift->pivot->doctor_id && $issetBooking->shiftId == $shift->pivot->shift_doctor_id && $issetBooking->date == $request->selectDate) {
                         $output .= '<div class="d-none checkbox-item p-2">
-                        <input type="checkbox" name="chooseShift" id="checkboxOne' . $key . '"
+                        <input type="checkbox" disable name="chooseShift" id="checkboxOne' . $key . '"
                         value="' . $shift->id . '">
 
                             <label for="checkboxOne' . $key . '">' . $shift->name . '</label>
                             </div>';
+                    } else {
+                        $output .= '<div class="checkbox-item p-2">
+                        <input type="checkbox" name="chooseShift" id="checkboxOne' . $key . '"
+                            value="' . $shift->id . '">
+                        <label for="checkboxOne' . $key . '">' . $shift->name . '</label>
+                        </div>';
                     }
                 } else {
                     $output .= '<div class="checkbox-item p-2">
@@ -57,13 +63,12 @@ class DetailDoctorController extends Controller
                 }
             }
             $output .= '</div>';
-            return Response($output);
         } else {
             $output .= '<div class="checkbox-book d-flex flex-wrap justify-content-center">
                             <h1>bác sĩ đã hết ca</h1>
                         </div>';
-            return Response($output);
-        }
+                    }
+        return Response($output);
     }
 
     public function booking(Request $request)
@@ -151,7 +156,7 @@ class DetailDoctorController extends Controller
         $patient = User::find($id);
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'image' => 'required',
@@ -161,7 +166,6 @@ class DetailDoctorController extends Controller
             'password.required' => 'Bạn cần phải nhập password',
             'name.min' => 'Không được nhỏ hơn 5 ký tự',
             'email.required' => 'Bạn cần phải nhập email',
-            'email.unique' => 'Email đã tồn tại',
             'phone.required' => 'Không được để trống',
             'address.required' => 'Không được để trống',
             'image.required' => 'Không được để trống',

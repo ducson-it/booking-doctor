@@ -9,7 +9,6 @@
         </div>
     @endif
         <form action="{{ route('update-profile', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
-            @method('PUT')
             @csrf
             <div class="tab-content pt-3">
                 <form class="form" novalidate="">

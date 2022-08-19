@@ -16,6 +16,7 @@
                             <th scope="col">Ca đặt</th>
                             <th scope="col">Ngày đặt</th>
                             <th scope="col">Trạng thái</th>
+                            <th scope="col">Attach</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -38,6 +39,16 @@
                                             class="btn btn-primary">Successed</button>
                                     @endif
                                 </td>
+                                <td>
+                                    @if ($list->status == 3)
+                                        <a href="{{ route('doctor.download.diagnose', $list->id) }}">
+                                            <button
+                                                class="button border items- center text-gray-700 dark:border-dark-5 dark:text-gray-300 hidden sm:flex">
+                                                Kết quả
+                                            </button>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td><a href="{{ route('deleteBooking', $list->id) }}" class="btn btn-danger">Cancel</a></td>
                             </tr>
                         @endforeach
@@ -50,7 +61,8 @@
                     <img src="{{ asset('img/090430-uu-dai-di-kham-mediplus.jpg') }}" width="100%" alt="">
                 </div>
                 <div class="des-patient ">
-                    <a href="{{ route('edit-profile', Auth::user()->id) }}" class="d-block my-2 btn btn-warning">Sửa thông tin</a>
+                    <a href="{{ route('edit-profile', Auth::user()->id) }}" class="d-block my-2 btn btn-warning">Sửa thông
+                        tin</a>
                     <p>Name: {{ Auth::user()->name }}</p>
                     <p>Email: {{ Auth::user()->email }}</p>
                     <p>Phone: {{ Auth::user()->phone }}</p>

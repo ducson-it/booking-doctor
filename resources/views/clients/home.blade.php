@@ -96,51 +96,21 @@
             </div>
             <div #swiperRef="" class="swiper mySwiper two">
                 <div class="swiper-wrapper">
+                    @foreach ($allNew as $new)
                     <div class="swiper-slide">
                         <div class="row">
-                            <img src="img/090430-uu-dai-di-kham-mediplus.jpg" alt="" />
+                            <img src="{{ asset('img/'.$new->image) }}" alt="" />
                             <h3 class="font1 text-start my-2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
+                               {{ $new->title }}
                             </h3>
                             <p class="font2 text-start">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
+                                {{ $new->subtitle }}
                             </p>
                             <a class="text-decoration-none font1 text-start" href="">Xem chi tiết <i
                                     class="bi bi-chevron-right fs-6"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="row">
-                            <img src="img/090430-uu-dai-di-kham-mediplus.jpg" alt="" />
-                            <h3 class="font1 text-start my-2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
-                            </h3>
-                            <p class="font2 text-start">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
-                            </p>
-                            <a class="text-decoration-none font1 text-start" href="">Xem chi tiết <i
-                                    class="bi bi-chevron-right fs-6"></i></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row">
-                            <img src="img/090430-uu-dai-di-kham-mediplus.jpg" alt="" />
-                            <h3 class="font1 text-start my-2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
-                            </h3>
-                            <p class="font2 text-start">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Aliquid, facere
-                            </p>
-                            <a class="text-decoration-none font1 text-start" href="">Xem chi tiết <i
-                                    class="bi bi-chevron-right fs-6"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

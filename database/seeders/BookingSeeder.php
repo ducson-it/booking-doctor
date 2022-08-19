@@ -25,10 +25,8 @@ class BookingSeeder extends Seeder
                     'doctor_id' => User::Where('role_id', '=', 2)->get()->random()->id,
                     'patient_id' =>  User::Where('role_id', '=', 3)->get()->random()->id,
                     'status' => $faker->randomElement(['1','2','3']),
-                    'date' => '2022-08-17',
+                    'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
                     'shiftId' => Shift::all()->random()->id,
-                    // 'package_id' => 1,
-                    // 'count' => 8,
                 ],
             );
         };

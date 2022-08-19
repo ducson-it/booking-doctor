@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserSeeder extends Seeder
@@ -23,13 +24,13 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             User::insert(
                 [
-                    'name' => 'abc',
+                    'name' => $faker->userName,
                     'email' => $faker->safeEmail(),
-                    'password' =>  md5('123123123'),
+                    'password' =>  Hash::make('123123123'),
                     'image' => 'ok',
-                    'phone' => '098772123',
-                    'address' => 'nghe an',
-                    'description' => 'ok con de',
+                    'phone' => $faker->phoneNumber,
+                    'address' => $faker->address,
+                    'description' => $faker->text($maxNbChars = 500),
                     'level' => 'thac si',
                     'gender' => 'male',
                     'role_id' => Role::all()->random()->id,

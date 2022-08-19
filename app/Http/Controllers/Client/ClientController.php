@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\News;
 use App\Models\Package_Care;
 use App\Models\Shift;
 use App\Models\User;
@@ -25,7 +26,8 @@ class ClientController extends Controller
     {
         $allDoctor = $this->user->getAllDoctor();
         $allPackage = Package_Care::all();
-        return view('clients.home', compact('allDoctor', 'allPackage'));
+        $allNew = News::all();
+        return view('clients.home', compact('allDoctor', 'allPackage', 'allNew'));
     }
 
     public function detailDoctor($id)
