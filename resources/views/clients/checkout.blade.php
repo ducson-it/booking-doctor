@@ -15,20 +15,23 @@
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
-                                <h6 class="my-0">Product name</h6>
-                                <small class="text-muted">Brief description</small>
+                                <h6 class="my-0">{{ $getPackage->name }}</h6>
                             </div>
                             <span class="text-muted">{{ $getPackage->price }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>{{ $getDoctor->price }}</strong>
+                            <span>Total</span>
+                            <strong>{{ $getPackage->price }}</strong>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Thông tin cá nhân</h4>
-                    <form class="needs-validation" novalidate="">
+                    <form action="{{ route('package.save') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="package_id" value="{{ $getPackage->id }}">
+                        <input type="hidden" name="package_count" value="{{ $getPackage->count }}">
+                        <input type="hidden" name="package_buy_number" value="{{ $getPackage->buy_number }}">
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="username" class="form-label">Họ và tên</label>
@@ -68,20 +71,10 @@
                             </div>
                             <hr class="my-4">
                             <input type="hidden" name="doctor_id" value="{{ $getDoctor->id }}">
-
                             <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                     </form>
                 </div>
             </div>
         </main>
-
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">© 2017–2022 Company Name</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
     </div>
 @endsection

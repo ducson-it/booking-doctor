@@ -20,7 +20,8 @@ class PackageCareSeeder extends Seeder
                 [
                     'name' => 'Lorem Ipsum',
                     'description' => 'Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident',
-                    'price' => 40000000
+                    'price' => 40000000,
+                    'count' => 8
                 ],
             );
         };

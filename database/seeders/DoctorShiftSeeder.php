@@ -21,7 +21,7 @@ class DoctorShiftSeeder extends Seeder
                 [
                     'shift_doctor_id' => Shift::all()->random()->id,
                     'doctor_id' => User::where('role_id', '=', '2')->get()->random()->id,
-                    'date' => '2022-08-06'
+                    'date' => '2022-08-17'
                 ],
             );
         };

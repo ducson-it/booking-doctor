@@ -42,10 +42,28 @@ class ClientController extends Controller
 
     public function selectPackage($id)
     {
-        $allDoctor = $this->user->getAllDoctor();
-        $package = Package_Care::find($id);
-        return view('clients.Package', compact('package', 'allDoctor'));
+        $itemPackage = User_package::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+        if (!empty($itemPackage)) {
+            if ($itemPackage->package_id == $id) {
+                if ($itemPackage->count > 0) {
+                    return redirect()->back()->with('msg', 'Bạn chưa sử dụng hết gói đã mua');
+                }
+            } elseif ($itemPackage->package_id != $id) {
+                if ($itemPackage->count > 0) {
+                    return redirect()->back()->with('msg', 'Bạn chưa sử dụng hết gói đã mua');
+                } else {
+                    $allDoctor = $this->user->getAllDoctor();
+                    $package = Package_Care::find($id);
+                    return view('clients.Package', compact('package', 'allDoctor'));
+                }
+            };
+        } else {
+            $allDoctor = $this->user->getAllDoctor();
+            $package = Package_Care::find($id);
+            return view('clients.Package', compact('package', 'allDoctor'));
+        }
     }
+
 
     public function ajaxSearch(Request $request)
     {
@@ -65,14 +83,35 @@ class ClientController extends Controller
     {
         $getPackage = Package_Care::find($request->packageId);
         $getDoctor = User::find($request->doctor_package);
-
         return view('clients.checkout', compact('getPackage', 'getDoctor'));
     }
 
     public function saveBill(Request $request)
     {
-        $bookPackage = new User_package();
-        $bookPackage->user_id = Auth::user()->id;
-        $bookPackage->doctor_package_id = $request->doctor_id;
+        $itemPackage = User_package::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+        if (!empty($itemPackage)) {
+            if ($itemPackage->package_id == $request->package_id) {
+                $countBuyNumber = $itemPackage->package_id + 1;
+            }
+            $bookPackage = new User_package();
+            $bookPackage->user_id = Auth::user()->id;
+            $bookPackage->doctor_package_id = $request->doctor_id;
+            $bookPackage->package_id = $request->package_id;
+            $bookPackage->count = $request->package_count;
+            $bookPackage->buy_number = $countBuyNumber;
+            $bookPackage->save();
+            $doctor = User::find($request->doctor_id);
+            return view('clients.buy_package_success', compact('doctor'));
+        } else {
+            $bookPackage = new User_package();
+            $bookPackage->user_id = Auth::user()->id;
+            $bookPackage->doctor_package_id = $request->doctor_id;
+            $bookPackage->package_id = $request->package_id;
+            $bookPackage->count = $request->package_count;
+            $bookPackage->buy_number = 1;
+            $bookPackage->save();
+            $doctor = User::find($request->doctor_id);
+            return view('clients.buy_package_success', compact('doctor'));
+        }
     }
 }

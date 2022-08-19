@@ -1,7 +1,10 @@
 @extends('layouts.layout_admin_master')
 
 @section('content')
-    <h1>Đăng ký user bác sĩ</h1>
+    <div class="title">
+        <h1>Đăng ký user bác sĩ</h1>
+        <a href="" class="btn btn-primary">Thêm</a>
+    </div>
     @if (session('msg'))
         <div class="alert alert-success mb-1 mt-1">
             {{ session('msg') }}

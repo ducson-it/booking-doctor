@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnsDoctorIdToPackageCaresTable extends Migration
+class AddColumnBuyNumberToUserPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnsDoctorIdToPackageCaresTable extends Migration
      */
     public function up()
     {
-        Schema::table('package_cares', function (Blueprint $table) {
-            $table->bigInteger('doctor_id');
+        Schema::table('user_packages', function (Blueprint $table) {
+            $table->integer('buy_number')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnsDoctorIdToPackageCaresTable extends Migration
      */
     public function down()
     {
-        Schema::table('package_cares', function (Blueprint $table) {
-            $table->dropColumn('doctor_id');
+        Schema::table('user_packages', function (Blueprint $table) {
+            $table->dropColumn('buy_number');
         });
     }
 }
