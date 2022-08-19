@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="title">
-        <h1>Đăng ký user bác sĩ</h1>
-        <a href="" class="btn btn-primary">Thêm</a>
+        <h1>Đăng ký user bệnh nhân</h1>
     </div>
     @if (session('msg'))
         <div class="alert alert-success mb-1 mt-1">
@@ -11,12 +10,12 @@
         </div>
     @endif
     <div class="container">
-        <form action="{{ route('admin.doctor.store') }}" method="post">
+        <form action="{{ route('admin.patient.store') }}" method="post">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Tên bác sĩ</label>
+                <label class="form-label">Tên bệnh nhân</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                    placeholder="Tên bác sĩ">
+                    placeholder="Tên bệnh nhân">
                 @error('name')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -25,7 +24,7 @@
             <div class="mb-3">
                 <label class="form-label">Email đăng nhập</label>
                 <input type="text" name="email" class="form-control" value="{{ old('email') }}"
-                    placeholder="Email bác sĩ">
+                    placeholder="Email bệnh nhân">
                 @error('email')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -40,7 +39,7 @@
                 @enderror
             </div>
 
-            <input type="hidden" name="role" class="form-control" value="2">
+            <input type="hidden" name="role" class="form-control" value="3">
 
             {{-- <div class="mb-3">
                 <div>

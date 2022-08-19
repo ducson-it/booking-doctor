@@ -44,11 +44,11 @@ class PatientController extends Controller
             'email' => 'required|unique:users',
             // 'password' => 'required'
         ], [
-            'name.required' => 'Ban can phai nhap ten',
-            // 'password.required' => 'Ban can phai password',
-            'name.min' => 'Khong duoc nho hon 5 ky tu',
-            'email.required' => 'Ban can phai nhap emil',
-            'email.unique' => 'Da ton tai email',
+            'name.required' => 'Bạn cần phải nhập tên',
+            'password.required' => 'Bạn cần phải nhập password',
+            'name.min' => 'Không được nhỏ hơn 5 ký tự',
+            'email.required' => 'Bạn cần phải nhập email',
+            'email.unique' => 'Email đã tồn tại',
         ]);
 
         $doctor = new User();
@@ -63,7 +63,7 @@ class PatientController extends Controller
         $doctor->description = '';
         $doctor->gender = '';
         $doctor->save();
-        return redirect()->route('admin.patient.index')->with('msg', 'tao user thanh cong');
+        return redirect()->route('admin.patient.index')->with('msg', 'Tạo user thành công');
     }
 
     /**
@@ -85,7 +85,7 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        $patient = Role::find(Constants::ROLE_PATIENT)->user()
+        $patient = Role::find(Constants::ROLE_PATIENT)->users()
             ->where('id', $id)
             ->first();
         return view('admin.edit-patient', compact('patient'));
@@ -98,25 +98,45 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request,$id)
     {
+        $patient = User::find($id);
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|unique:users'
+            'email' => 'required|unique:users',
+            'phone' => 'required',
+            'address' => 'required',
+            'image' => 'required',
+            'description' => 'required',
         ], [
-            'name.required' => 'Ban can phai nhap ten',
-            'name.min' => 'Khong duoc nho hon 5 ky tu',
-            'email.required' => 'Ban can phai nhap emil',
-            'email.unique' => 'Da ton tai email',
+            'name.required' => 'Bạn cần phải nhập tên',
+            'password.required' => 'Bạn cần phải nhập password',
+            'name.min' => 'Không được nhỏ hơn 5 ký tự',
+            'email.required' => 'Bạn cần phải nhập email',
+            'email.unique' => 'Email đã tồn tại',
+            'phone.required' => 'Không được để trống',
+            'address.required' => 'Không được để trống',
+            'image.required' => 'Không được để trống',
+            'description.required' => 'Không được để trống',
         ]);
 
+        if($request->hasFile('image')) {
+            $originName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$extension;
+            $request->file('image')->move(public_path('img'), $fileName);
+        }
 
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        // $doctor->level = $request->select;
-        $doctor->save();
+        $patient->name = $request->name;
+        $patient->email = $request->email;
+        $patient->phone = $request->phone;
+        $patient->address = $request->address;
+        $patient->image = $fileName;
+        $patient->description = $request->description;
+        $patient->save();
 
-        return redirect()->route('admin.patient.index')->with('msg', 'update thanh cong');
+        return redirect()->route('admin.patient.index')->with('msg', 'Update thành công');
     }
 
     /**
@@ -129,7 +149,7 @@ class PatientController extends Controller
     {
         User::destroy($id);
 
-        return redirect()->route('admin.doctor.index')->with('msg', 'delete thanh cong');
+        return redirect()->route('admin.doctor.index')->with('msg', 'Delete thành công');
 
     }
 }

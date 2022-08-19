@@ -19,6 +19,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -28,6 +29,7 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <link src="{{ asset('js/sb-admin-2.js') }}" rel="stylesheet">
+
 
 
     <!-- Styles -->
@@ -272,6 +274,12 @@
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
     </script>
      <script src="{{ asset('js/javascript.js') }}"></script>
+     <script type="text/javascript">
+        CKEDITOR.replace('wysiwyg-editor', {
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 </body>
 
 </html>

@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 [
                     'name' => 'abc',
                     'email' => $faker->safeEmail(),
-                    'password' => '123',
+                    'password' =>  md5('123123123'),
                     'image' => 'ok',
                     'phone' => '098772123',
                     'address' => 'nghe an',
