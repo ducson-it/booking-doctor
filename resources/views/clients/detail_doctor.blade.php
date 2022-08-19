@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        @if (Session::has('msg'))
+        <p class="alert text-center {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('msg') }}</p>
+        @endif
         <div class="row">
             <h1 class="text-center py-lg-5">Đặt lịch khám bệnh </h1>
         </div>
@@ -13,7 +16,7 @@
                         <img class="p-4" src="{{ asset('img/Bs-Nguyen-Ngoc-Phuong-Quynh-min.jpeg') }}" alt="">
                     </div>
                     <p>NAME: {{ $doctorId->name }} </p>
-                    {{-- <p>AGE: {{ $doctorId->name }} </p> --}}
+                    {{-- <p>AGE: {{ $doctorId->age  }} </p> --}}
                     <p>LEVEL: {{ $doctorId->level }} </p>
                 </div>
                 <div class="col-lg-6">
@@ -27,7 +30,6 @@
                                     <input type="date" id="datePicker"
                                         class="form-control date-picker" name="setTodaysDate" min="2005-01-01">
                                 </div>
-
                             </div>
                         </div>
                         <div class="row">

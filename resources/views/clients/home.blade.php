@@ -1,6 +1,22 @@
 @extends('layouts.layout_client_master')
 
+@section('banner')
+<div class="banner">
+    <img class="w-100 d-block" src="{{ asset('img/bookingcare-cover-4.jpg') }}" />
+</div>
+<div class="search text-center">
+    <h1>Nền tảng y tế <br /><b>chăm sóc sức khỏe toàn diện</b></h1>
+    <form action="{{ route('ajax.searchDoctor') }}" class="d-flex justify-content-center input-search" role="search">
+        <input class="form-control me-2" name="searchDoctor" id="searchDoctor" type="search" placeholder="Search"
+            aria-label="Search" />
+    </form>
+</div>
+@endsection
+
 @section('content')
+    @if (Session::has('msg'))
+        <p class="alert text-center {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('msg') }}</p>
+    @endif
     <div class="container px-lg-5 mt-4 check-shift">
         <div class="row">
             <h3 class="mt-4">Check shift availability</h3>
@@ -49,62 +65,6 @@
 
         </div>
     </section>
-
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
-              <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                  <h4 class="my-0 fw-normal">Free</h4>
-                </div>
-                <div class="card-body">
-                  <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
-                    <li>2 GB of storage</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
-                  </ul>
-                  <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                  <h4 class="my-0 fw-normal">Pro</h4>
-                </div>
-                <div class="card-body">
-                  <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>20 users included</li>
-                    <li>10 GB of storage</li>
-                    <li>Priority email support</li>
-                    <li>Help center access</li>
-                  </ul>
-                  <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                <div class="card-header py-3 text-bg-primary border-primary">
-                  <h4 class="my-0 fw-normal">Enterprise</h4>
-                </div>
-                <div class="card-body">
-                  <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>30 users included</li>
-                    <li>15 GB of storage</li>
-                    <li>Phone and email support</li>
-                    <li>Help center access</li>
-                  </ul>
-                  <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
     {{-- end buy package --}}
     <!-- doctor -->
     <div class="container-fluid bg-white">

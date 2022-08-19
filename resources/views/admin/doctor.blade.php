@@ -14,6 +14,10 @@
                 <th width='20%'>Image</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Password</th>
+                <th>Phone</th>
+                <th>Description</th>
+                <th>Address</th>
                 <th>Level</th>
                 <th>Action</th>
             </tr>
@@ -26,6 +30,10 @@
                     <td><img width="100%" src="{{ asset('img/ducson.jpg') }}" alt=""></td>
                     <td>{{ $doctor->name }}</td>
                     <td>{{ $doctor->email }}</td>
+                    <td>{{ $doctor->password }}</td>
+                    <td>{{ $doctor->phone }}</td>
+                    <td>{{ $doctor->description }}</td>
+                    <td>{{ $doctor->address }}</td>
                     <td>{{ $doctor->level }}</td>
                     <td>
                         <form action="{{ route('admin.doctor.edit', $doctor->id) }}" method="get">

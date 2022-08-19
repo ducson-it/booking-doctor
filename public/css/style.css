@@ -241,3 +241,52 @@
     color: #777777;
   }
 
+
+  .home-search a{
+    display: block;
+    list-style-type: none;
+}
+
+  .home-search a{
+    display: block;
+    text-decoration: none;
+  }
+
+
+  .home-search .itemDoctor {
+    background-color: #e5e6e8;
+    padding: 20px;
+    justify-content: space-between;
+  }
+
+  .home-search .itemDoctor img {
+    width: 20%;
+  }
+
+  .doctor-package {
+
+  }
+
+  .doctor-package input{
+    display: none;
+  }
+
+
+  .doctor-package label{
+      padding: 20px;
+      margin: 20px;
+      background-color: #e5e6e8;
+    }
+
+    .doctor-package input:checked ~ label {
+      background-color: #33bbff;
+    }
+
+    .label-img{
+        flex: 1;
+    }
+
+    .label-text{
+        flex: 2;
+    }
+

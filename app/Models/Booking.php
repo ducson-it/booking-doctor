@@ -21,7 +21,8 @@ class Booking extends Model
         'status',
         'shift',
         'packageId',
-        'count'
+        'count',
+        'buy_number'
     ];
 
     /**

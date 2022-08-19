@@ -25,7 +25,7 @@ class Shift extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'doctor_shift' ,'shift_doctor_id','doctor_id' );
     }
 
 }

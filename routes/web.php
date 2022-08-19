@@ -36,9 +36,11 @@ Route::post('/detail-doctor/{id}', [DetailDoctorController::class, 'booking'])->
 Route::get('/delete/{id}', [DetailDoctorController::class, 'deleteBooking'])->middleware('auth')->name('deleteBooking');
 Route::get('/restore/{id}', [ShiftController::class, 'restoreShift'])->middleware('auth')->name('restoreShift');
 Route::get('/profile/{id}', [DetailDoctorController::class, 'detailPatient'])->name('detailPatient');
+Route::get('profile/edit/{id}', [DetailDoctorController::class, 'editProfile'])->name('edit-profile');
 Route::get('/package/{id}', [ClientController::class, 'selectPackage'])->name('package');
 Route::get('/package-bill', [ClientController::class, 'packageBill'])->name('package.bill');
-Route::get('/save-bill-package', [ClientController::class, 'saveBill'])->name('package.save');
+Route::post('/save-bill-package', [ClientController::class, 'saveBill'])->name('package.save');
+Route::get('/infor-success', [ClientController::class, 'inforSuccess'])->name('package.inforSuccess');
 
 
 Route::post('/ajax/detail-doctor/{id}', [DetailDoctorController::class, 'ajaxDetailDoctor'])->name('ajax.detailDoctor');

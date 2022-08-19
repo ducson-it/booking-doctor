@@ -20,16 +20,36 @@ class ShiftSeeder extends Seeder
         $faker = Faker\Factory::create();
         Shift::insert(
             [
-                'name' => '10-11h',
+                'name' => '08-09h',
             ]
         );
         Shift::insert([
-            'name' => '11-12h'
+            'name' => '09-10h'
         ]
         );
         Shift::insert(
             [
-                'name' => '12-13h',
+                'name' => '11-12h',
+            ]
+        );
+        Shift::insert(
+            [
+                'name' => '13-14h',
+            ]
+        );
+        Shift::insert(
+            [
+                'name' => '14-15h',
+            ]
+        );
+        Shift::insert(
+            [
+                'name' => '15-16h',
+            ]
+        );
+        Shift::insert(
+            [
+                'name' => '16-17h',
             ]
         );
     }

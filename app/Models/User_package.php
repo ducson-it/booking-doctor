@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User_package extends Model
 {
-    use HasFactory ,SoftDeletes;
+    use HasFactory ;
 
     protected $table = 'user_packages';
 
@@ -18,8 +18,17 @@ class User_package extends Model
         'user_id',
         'doctor_package_id',
         'package_id',
+        'count',
+        'buy_number'
     ];
 
-
-
+    /**
+     * Get the package_care that owns the User_package
+     *
+     * @return \Illuminate\package_care\Eloquent\Relations\BelongsTo
+     */
+    public function Package_care(): BelongsTo
+    {
+        return $this->belongsTo(package_care::class, 'package_id', 'id');
+    }
 }

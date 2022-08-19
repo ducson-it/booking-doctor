@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             // RoleSeeder::class,
             // UserSeeder::class,
             // DoctorShiftSeeder::class,
-            BookingSeeder::class,
-            // PackageCareSeeder::class
+            // BookingSeeder::class,
+            PackageCareSeeder::class
         ]);
     }
 }
