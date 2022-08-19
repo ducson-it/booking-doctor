@@ -2,34 +2,18 @@
 
 @section('content')
     <h1>Chọn lịch làm việc</h1>
-    <button></button>
     <div class="col-12 m-3  ">
         <label for="datePicker">Ca còn hiện tại</label>
-        <input type="date" id="datePicker"
-            class="form-control date-picker" name="setTodaysDate" min="2005-01-01">
+        <input type="date" id="datePicker" class="form-control date-picker" name="setTodaysDate" min="2005-01-01">
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                {{-- <th scope="col"><input type="checkbox" id="checkedAll"></th> --}}
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($listShift as $key => $list)
-                <tr>
-                    {{-- <th scope="row"><input type="checkbox" name="checkItem[]" id="checkItem"></th> --}}
-                    <th scope="row">{{ $key++ }}</th>
-                    <th scope="row">{{ $list->name }}</th>
-                    <td scope="row"></td>
-                    <td scope="row"><a href="" class="btn btn-primary">Thêm</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="checkbox-book d-flex flex-wrap justify-content-between">
+        @foreach ($listShift as $key => $list)
+            <div class="checkbox-item p-2">
+                <input type="checkbox" name="chooseShift" id="checkboxOne{{ $key }}" value="{{ $list->id }}">
+                <label for="checkboxOne{{ $key }}">{{ $list->name }}</label>
+            </div>
+        @endforeach
+    </div>
 @endsection
 
 @push('js')
@@ -53,7 +37,7 @@
             e.addEventListener('change', () => {
                 for (let index = 0; index < checkItem.length; index++) {
                     if (checkItem[index].checked) {
-                        count+=1;
+                        count += 1;
                     }
                     quantityChecked.innerHTML = count;
                 }

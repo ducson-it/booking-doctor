@@ -1,9 +1,6 @@
 @extends('layouts.layout_doctor_master')
 
 @section('content')
-@extends('layouts.layout_admin_master')
-
-@section('content')
     <!-- Content Row -->
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
@@ -138,6 +135,4 @@
             </tbody>
         </table>
     </div>
-@endsection
-v
 @endsection
